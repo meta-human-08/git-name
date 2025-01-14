@@ -57,7 +57,11 @@ function generateRepo(name, startDate = '2024-01-07') {
 
     // Initialize repository
     console.log(`Initializing repository: ${repoDir}`);
-    execSync(`mkdir ${repoDir} && cd ${repoDir} && git init`);
+    execSync(`mkdir ${repoDir} && cd ${repoDir}`);
+    execSync(`mkdir ${repoDir} && cd ${repoDir}`);
+    execSync(`git config --global user.email "steve1818fernandes@gmail.com"`);
+    execSync(`git config --global user.name "Aspireve"`);
+    execSync(`git init`);
 
     // Generate heatmap pattern commits
     console.log(`Generating heatmap pattern for: ${name}`);
