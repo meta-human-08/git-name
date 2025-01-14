@@ -46,19 +46,25 @@ function generateHeatmapPattern(name, startDate, repoDir) {
   }
 
 function generateRepo(name, startDate = '2024-01-07') {
-  const repoDir = "my-contributions";
+  const repoDir = "my-contributions-aspireve";
 
   try {
-    // Clean up any existing repository
+    // Check if the repository directory already exists and delete it
     if (fs.existsSync(repoDir)) {
       console.log(`Cleaning up existing repository: ${repoDir}`);
-      fs.rmSync(repoDir, { recursive: true, force: true });
+      try {
+        fs.rmSync(repoDir, { recursive: true, force: true });
+        console.log(`Successfully deleted: ${repoDir}`);
+      } catch (err) {
+        console.error(`Error deleting ${repoDir}: ${err.message}`);
+        throw new Error(`Failed to clean up existing repository: ${repoDir}`);
+      }
     }
 
     // Initialize repository
     console.log(`Initializing repository: ${repoDir}`);
-    execSync(`mkdir ${repoDir} && cd ${repoDir}`);
-    execSync(`mkdir ${repoDir} && cd ${repoDir}`);
+    fs.mkdirSync(repoDir); // Create the repository directory
+    process.chdir(repoDir); // Change the working directory to the new repo
     execSync(`git config --global user.email "steve1818fernandes@gmail.com"`);
     execSync(`git config --global user.name "Aspireve"`);
     execSync(`git init`);
@@ -68,6 +74,7 @@ function generateRepo(name, startDate = '2024-01-07') {
     generateHeatmapPattern(name, startDate, repoDir);
 
     // Zip the repository
+    process.chdir(".."); // Change back to the parent directory
     console.log(`Zipping the repository: ${repoDir}`);
     execSync(`zip -r ${repoDir}.zip ${repoDir}`);
     console.log(`Repository zipped as: ${repoDir}.zip`);
@@ -78,6 +85,7 @@ function generateRepo(name, startDate = '2024-01-07') {
     return null;
   }
 }
+
 
 // Middleware to parse JSON body
 app.use(express.json());
