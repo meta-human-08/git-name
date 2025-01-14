@@ -52,7 +52,7 @@ function generateRepo(name, startDate = '2024-01-07') {
     // Clean up any existing repository
     if (fs.existsSync(repoDir)) {
       console.log(`Cleaning up existing repository: ${repoDir}`);
-      execSync(`rm -rf ${repoDir}`);
+      fs.rmSync(repoDir, { recursive: true, force: true });
     }
 
     // Initialize repository
