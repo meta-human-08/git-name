@@ -23,19 +23,27 @@ function generateHeatmapPattern(name, startDate, repoDir) {
     .join('');
   const patternLength = patternString.length;
 
+  console.log("Before")
+
   const currentDate = new Date(startDate);
+  console.log("Middle")
   const commitFile = path.join(repoDir, 'newlol.txt');
+  console.log("After")
 
   if (!fs.existsSync(commitFile)) {
+  console.log("Running??")
     fs.writeFileSync(commitFile, '');
   }
+  console.log("Cool")
 
   for (let i = 0; i < patternLength; i++) {
     const char = patternString[i];
     if (char === 'x') {
       const commitDate = currentDate.toISOString();
       for (let day = 0; day < 1; day++) {
+        console.log("Bug Before")
         fs.appendFileSync(commitFile, `${commitDate} Day ${day}\n`);
+        console.log("Bug After")
 
         const command = `cd ${repoDir} && git add . && GIT_AUTHOR_DATE="${commitDate}" GIT_COMMITTER_DATE="${commitDate}" git commit -m "Day ${day}, Commit ${commitDate}"`;
 
