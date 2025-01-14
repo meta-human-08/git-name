@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const express = require('express');
+const fs = require("fs");
+const path = require("path");
+const { execSync } = require("child_process");
+const express = require("express");
 
 const app = express();
 const PORT = 3000;
@@ -18,43 +18,34 @@ function generateHeatmapPattern(name, startDate, repoDir) {
   };
 
   const patternString = name
-    .split('')
-    .map((char) => patterns[char.toUpperCase()] || '')
-    .join('');
+    .split("")
+    .map((char) => patterns[char.toUpperCase()] || "")
+    .join("");
   const patternLength = patternString.length;
 
-  console.log("Before")
-
   const currentDate = new Date(startDate);
-  console.log("Middle")
-  const commitFile = path.join(repoDir, 'newlol.txt');
-  console.log("After")
-
-  if (!fs.existsSync(commitFile)) {
-  console.log("Running??")
-    fs.writeFileSync(commitFile, '');
-  }
-  console.log("Cool")
+  const commitFile = path.join("./", "newlol.txt");
+  execSync(`touch newlol.txt`);
 
   for (let i = 0; i < patternLength; i++) {
     const char = patternString[i];
-    if (char === 'x') {
+    if (char === "x") {
       const commitDate = currentDate.toISOString();
       for (let day = 0; day < 1; day++) {
-        console.log("Bug Before")
+        console.log("Bug Before");
         fs.appendFileSync(commitFile, `${commitDate} Day ${day}\n`);
-        console.log("Bug After")
+        console.log("Bug After");
 
-        const command = `cd ${repoDir} && git add . && GIT_AUTHOR_DATE="${commitDate}" GIT_COMMITTER_DATE="${commitDate}" git commit -m "Day ${day}, Commit ${commitDate}"`;
+        const command = `git add . && GIT_AUTHOR_DATE="${commitDate}" GIT_COMMITTER_DATE="${commitDate}" git commit -m "Day ${day}, Commit ${commitDate}"`;
 
-        execSync(command, { stdio: 'inherit' });
+        execSync(command, { stdio: "inherit" });
       }
     }
     currentDate.setDate(currentDate.getDate() + 1);
   }
 }
 
-function generateRepo(name, startDate = '2024-01-07') {
+function generateRepo(name, startDate = "2024-01-07") {
   const repoDir = "my-contributions-aspireve";
 
   try {
@@ -94,15 +85,17 @@ function generateRepo(name, startDate = '2024-01-07') {
 app.use(express.json());
 
 // Route to generate a repository with a heatmap
-app.post('/generate-repo', (req, res) => {
+app.post("/generate-repo", (req, res) => {
   const { name, startDate } = req.body;
 
-  if (!name || typeof name !== 'string') {
-    return res.status(400).json({ error: 'Invalid input. "name" must be a string.' });
+  if (!name || typeof name !== "string") {
+    return res
+      .status(400)
+      .json({ error: 'Invalid input. "name" must be a string.' });
   }
 
   console.log(`Received request to generate repo with name: ${name}`);
-  const zipFilePath = generateRepo(name, startDate || '2024-01-07');
+  const zipFilePath = generateRepo(name, startDate || "2024-01-07");
 
   if (zipFilePath) {
     res.download(zipFilePath, `${name}-repo.zip`, (err) => {
@@ -114,7 +107,7 @@ app.post('/generate-repo', (req, res) => {
       console.log(`Cleaned up file: ${zipFilePath}`);
     });
   } else {
-    res.status(500).json({ error: 'Failed to create repository.' });
+    res.status(500).json({ error: "Failed to create repository." });
   }
 });
 
