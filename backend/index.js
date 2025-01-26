@@ -123,7 +123,7 @@ app.post("/generate-repo", (req, res) => {
     //   }
     //   // Clean up zip file after sending
     // });
-    fs.unlinkSync(zipFilePath);
+    fs.rmSync(zipFilePath, { recursive: true });
     console.log(`Cleaned up file: ${zipFilePath}`);
     res.status(200).json({ message: "Completed." });
   } else {
