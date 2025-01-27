@@ -9,12 +9,31 @@ const PORT = 3000;
 function generateHeatmapPattern(name, startDate, repoDir, text) {
   const patterns = {
     A: "xxxxxxxxooxoooxooxoooxxxxxxxooooooo",
-    S: "xxxxoxxxooxooxxooxooxxooxxxxooooooo",
-    P: "xxxxxxxxooxoooxooxoooxxxxoooooooooo",
-    I: "xoooooxxxxxxxxxxxxxxxxoooooxooooooo",
-    R: "xxxxxxxxooxoooxooxxooxxxooxxooooooo",
+    B: "xxxxxxxxooxooxxooxooxxxxxxxxooooooo",
+    C: "xxxxxxxxoooooxxoooooxxoooooxooooooo",
+    D: "xxxxxxxxoooooxxoooooxxxxxxxxooooooo",
     E: "xxxxxxxxooxooxxooxooxxooxooxooooooo",
+    F: "xxxxxxxxooxoooxooxoooxooxoooooooooo",
+    G: "xxxxxxxxoooooxxooxooxxooxxxxooooooo",
+    H: "xxxxxxxooxxoooooxxoooxxxxxxxooooooo",
+    I: "xoooooxxxxxxxxxxxxxxxxoooooxooooooo",
+    J: "xooooxxxoooooxxoooooxxxxxxxxooooooo",
+    K: "xxxxxxxoooxoooooxoxxoxxooooxooooooo",
+    L: "xxxxxxxooooooxooooooxooooooxooooooo",
+    M: "xxxxxxxoxoooooooxoooooxoooooxxxxxxxooooooo",
+    N: "xxxxxxxoxoooooooxxoooxxxxxxxooooooo",
+    O: "xxxxxxxxoooooxxoooooxxxxxxxxooooooo",
+    P: "xxxxxxxxooxoooxooxoooxxxxoooooooooo",
+    Q: "xxxxxooxoooxooxoooxxoxxxxxoxooooooo",
+    R: "xxxxxxxxooxoooxooxxooxxxooxxooooooo",
+    S: "xxxxoxxxooxooxxooxooxxooxxxxooooooo",
+    T: "xxoooooxxxxxxxxxxxxxxxxoooooooooooo",
+    U: "xxxxxxxooooooxooooooxxxxxxxxooooooo",
     V: "xxxxxooooooxxoooooxxoxxxxxooooooooo",
+    W: "xxxxxxooooooxooooxxoooooooxoxxxxxxoooooooo",
+    X: "xxooxxxooxxoooooxxoooxxooxxxooooooo",
+    Y: "xxxoooooooxxxxoooxxxxxxxooooooooooo",
+    Z: "xooooxxxooxxoxxoxoooxxxooooxooooooo"
   };
 
   const patternString = text
