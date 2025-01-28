@@ -66,7 +66,7 @@ function generateHeatmapPattern(name, startDate, repoDir, text) {
 
 function generateRepo(
   name,
-  startDate = "2020-01-30",
+  startDate = "2024-01-07",
   email,
   accessToken,
   repoName,
