@@ -11,7 +11,7 @@ function generateHeatmapPattern(name, startDate, repoDir, text) {
     A: "xxxxxxxxooxoooxooxoooxxxxxxxooooooo",
     B: "xxxxxxxxooxooxxooxooxxxxxxxxooooooo",
     C: "xxxxxxxxoooooxxoooooxxoooooxooooooo",
-    D: "xxxxxxxxoooooxxoooooxxxxxxxxooooooo",
+    D: "xxxxxxxxoooooxxoooooxoxxxxxoooooooo",
     E: "xxxxxxxxooxooxxooxooxxooxooxooooooo",
     F: "xxxxxxxxooxoooxooxoooxooxoooooooooo",
     G: "xxxxxxxxoooooxxooxooxxooxxxxooooooo",
@@ -30,7 +30,7 @@ function generateHeatmapPattern(name, startDate, repoDir, text) {
     T: "xxoooooxxxxxxxxxxxxxxxxoooooooooooo",
     U: "xxxxxxxooooooxooooooxxxxxxxxooooooo",
     V: "xxxxxooooooxxoooooxxoxxxxxooooooooo",
-    W: "xxxxxxooooooxooooxxoooooooxoxxxxxxoooooooo",
+    W: "xxxxxxxoooooxooooxxoooooooxoxxxxxxxooooooo",
     X: "xxooxxxooxxoooooxxoooxxooxxxooooooo",
     Y: "xxxoooooooxxxxoooxxxxxxxooooooooooo",
     Z: "xooooxxxooxxoxxoxoooxxxooooxooooooo"
