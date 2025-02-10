@@ -50,7 +50,7 @@ function generateHeatmapPattern(name, startDate, repoDir, text) {
     const char = patternString[i];
     if (char === "x") {
       const commitDate = currentDate.toISOString();
-      for (let day = 0; day < 16; day++) {
+      for (let day = 0; day < 5; day++) {
         console.log("Bug Before");
         fs.appendFileSync(commitFile, `${commitDate} Day ${day}\n`);
         console.log("Bug After");
